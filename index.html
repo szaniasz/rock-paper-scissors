@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Rock Paper Scissors Game</title>
+
+    <style>
+    
+    </style>
+  </head>
+
+<body>
+      
+</body>
+
+<script>
+
+function getComputerChoice() {
+    const arr = ["Rock", "Paper", "Scissors"];
+    const getIndex = Math.floor(Math.random() * 3);
+    const getChoice = arr[getIndex];
+    return getChoice;
+}
+//const playerSelection = "rock";
+//const computerSelection = getComputerChoice();
+
+playerScore = 0;
+computerScore = 0;
+
+
+
+function playRound(playerSelection, computerSelection) {
+    
+    playerSelection = playerSelection.toLowerCase();
+    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+ 
+    if (playerSelection === computerSelection) {
+        console.log("You chose the same! You: " + playerScore + " : Computer: " +  computerScore);
+
+    } else if ((playerSelection === "Rock" && computerSelection === "Paper") || 
+    (playerSelection === "Paper" && computerSelection === "Scissors") || 
+    (playerSelection === "Scissors" && computerSelection === "Rock")) {
+        computerScore++;
+        console.log("You lose! " + computerSelection + " beats " + playerSelection + " You: " + playerScore + " : Computer: " + computerScore);
+
+
+    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || 
+    (playerSelection === "Paper" && computerSelection === "Rock") || 
+    (playerSelection === "Scissors" && computerSelection === "Paper")) {
+        playerScore++;
+        console.log("You win! " + playerSelection + " beats " + computerSelection + " You: " + playerScore + " : Computer: " + computerScore);
+
+    }
+ }
+ 
+ function count() {
+    debugger;
+    while (playerScore < 5 && computerScore <5) {
+        const playerSelection = prompt();
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection)
+        if (playerScore === 5) {
+            console.log("Congratulation! You've won " + playerScore + " to " + computerScore + "!");
+            return;
+        } else if (computerScore === 5) {
+            console.log("Boooooo... You've lost " + playerScore + " to " + computerScore + "...");
+            return;
+        } 
+
+    }
+ }
+
+console.log(count());
+
+</script>
+</html>
+
